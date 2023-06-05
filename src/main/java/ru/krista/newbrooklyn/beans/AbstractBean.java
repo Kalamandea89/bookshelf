@@ -39,7 +39,10 @@ public abstract class AbstractBean<T> {
         log.info(getEntityManager().getProperties().toString());
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<T> cq = cb.createQuery(entityClass);
-        cq.select(cq.from(entityClass));
+        Root<T> routeRoot = cq.from(entityClass);
+        cq.orderBy(cb.asc(routeRoot.get("id")));
+
+        //cq.select(cq.from(entityClass));
         TypedQuery<T> q = getEntityManager().createQuery(cq);
         return q.getResultList();
     }

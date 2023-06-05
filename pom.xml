@@ -8,6 +8,9 @@
     <artifactId>newbrooklyn</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
+	<properties>
+        <node.executionRootDirectory>C:\Program Files\nodejs\</node.executionRootDirectory>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -64,7 +67,6 @@
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -78,13 +80,66 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <ChangeSet>${changeSet}</ChangeSet>
+                            <ChangeSetDate>${changeSetDate}</ChangeSetDate>
+                            <ChangeSetNumber>${changeSetNumber}</ChangeSetNumber>
+                            <Version>${project.version}</Version>
+                        </manifestEntries>
+                    </archive>
+                    <webResources>
+                        <resource>
+                            <directory>target/generated-resources/frontend</directory>
+                            <excludes>
+                                <exclude>**/rev-manifest*.json</exclude>
+                            </excludes>
+                        </resource>
+                        <resource>
+                            <directory>target/generated-resources/frontend</directory>
+                        </resource>
+                    </webResources>
+                    <!-- <webXml>web.xml</webXml> -->
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>2.0.1.Final</version>
             </plugin>
-
+            <plugin>
+                <groupId>com.github.eirslett</groupId>
+                <artifactId>frontend-maven-plugin</artifactId>
+                <!-- <version>1.12.1</version> -->
+                <version>1.6</version>
+                <configuration>
+                    <nodeVersion>v10.15.2</nodeVersion>
+                    <npmVersion>6.4.1</npmVersion>
+                    <installDirectory>${node.executionRootDirectory}</installDirectory>
+					<testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>webpack build</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <!-- <goal>npm</goal> -->
+                            <goal>webpack</goal>
+                        </goals>
+                        <configuration>
+                            <!-- optional: if not specified, it will run webpack's default
+                            build (and you can remove this whole <configuration> section.) -->
+                            <!-- <arguments>-p</arguments> -->
+                            <!-- <arguments>build -Dskip.webpack</arguments> -->
+                            <!-- <arguments>run build</arguments> -->
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
 
         <finalName>newbrooklyn</finalName>

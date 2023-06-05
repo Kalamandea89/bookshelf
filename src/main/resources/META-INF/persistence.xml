@@ -2,7 +2,8 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
     <persistence-unit name="ru-krista-data">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <jta-data-source>java:jboss/datasources/DataSourceEx</jta-data-source>
+<!--        <jta-data-source>java:jboss/datasources/DataSourceEx</jta-data-source>-->
+        <jta-data-source>java:/jdbc/dataaccess</jta-data-source>
 <!--        <jta-data-source>java:/jdbc/dataaccess</jta-data-source>-->
 <!--        <exclude-unlisted-classes>false</exclude-unlisted-classes>-->
         <class>ru.krista.newbrooklyn.entities.KristaUser</class>
