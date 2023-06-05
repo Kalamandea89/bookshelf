@@ -88,7 +88,8 @@ const plugins = () => {
 module.exports = {
     mode: 'development',
     entry: {
-        main: ["./frontend/src/jsx/Main.jsx"],
+        // main: ["./frontend/src/jsx/Main.jsx"],
+        main: ["./frontend/src/jsx/index.js"],
     },
     output: {
         path: path.join(__dirname, generatedHtmlPath),

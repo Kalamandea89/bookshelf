@@ -6,8 +6,9 @@
         <jta-data-source>java:/jdbc/dataaccess</jta-data-source>
 <!--        <jta-data-source>java:/jdbc/dataaccess</jta-data-source>-->
 <!--        <exclude-unlisted-classes>false</exclude-unlisted-classes>-->
-        <class>ru.krista.newbrooklyn.entities.KristaUser</class>
-        <class>ru.krista.newbrooklyn.entities.KristaPost</class>
+<!--        <class>ru.krista.newbrooklyn.entities.User</class>-->
+<!--        <class>ru.krista.newbrooklyn.entities.Genre</class>-->
+<!--        <class>ru.krista.newbrooklyn.entities.Book</class>-->
         <properties>
             <!-- jdbc:postgresql://хост:порт/имябазы -->
             <!-- <property name="hibernate.hbm2ddl.auto" value="update"/> -->

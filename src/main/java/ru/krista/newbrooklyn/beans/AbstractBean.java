@@ -55,9 +55,7 @@ public abstract class AbstractBean<T> {
         for (String field : fields) {
             root.fetch(field);
         }
-
         criteriaQuery.where(criteriaBuilder.equal(root.get("id"), id));
-
         TypedQuery<T> typedQuery = getEntityManager().createQuery(criteriaQuery);
 
         return typedQuery.getSingleResult();
@@ -67,13 +65,11 @@ public abstract class AbstractBean<T> {
         CriteriaBuilder criteriaBuilder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(entityClass);
         Root<T> root = criteriaQuery.from(entityClass);
-
         for (String field : fields) {
-            root.fetch(field);
+            root.fetch(field, JoinType.INNER);
         }
-
         criteriaQuery.select(root);
-
+        criteriaQuery.orderBy(criteriaBuilder.asc(root.get("id")));
         TypedQuery<T> typedQuery = getEntityManager().createQuery(criteriaQuery);
 
         return typedQuery.getResultList();

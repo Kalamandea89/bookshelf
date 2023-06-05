@@ -1,0 +1,9 @@
+.container-login{
+    width: 500px;
+    padding-top: 5em;
+}
+.login-form{
+    display: grid;
+    grid-template-rows: 6em 6em auto;
+    grid-template-columns: 20em;
+}

@@ -1,7 +1,7 @@
 package ru.krista.newbrooklyn.resources;
 
 import ru.krista.newbrooklyn.beans.UserBean;
-import ru.krista.newbrooklyn.entities.KristaUser;
+import ru.krista.newbrooklyn.entities.User;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;
@@ -16,25 +16,31 @@ public class UserResource {
     UserBean bean;
 
     @GET
-    public List<KristaUser> getAll() {
+    public List<User> getAll() {
         return bean.findAll();
     }
 
     @POST
-    public KristaUser create(KristaUser item) {
+    public User create(User item) {
         bean.create(item);
         return item;
     }
 
     @Path("{id}")
     @GET
-    public KristaUser getOne(@PathParam("id") Integer id) {
+    public User getOne(@PathParam("id") Integer id) {
         return bean.find(id);
     }
+    @Path("{email}")
+    @GET
+    public User getOneByEmail(@PathParam("email") String email) {
+        return bean.find(email);
+    }
+
 
     @Path("{id}")
     @PUT
-    public KristaUser update(@PathParam("id") Integer id, KristaUser item) {
+    public User update(@PathParam("id") Integer id, User item) {
         item.setId(id);
         bean.edit(item);
         return item;
