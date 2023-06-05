@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+    <persistence-unit name="ru-krista-data">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>java:jboss/datasources/DataSourceEx</jta-data-source>
+<!--        <jta-data-source>java:/jdbc/dataaccess</jta-data-source>-->
+<!--        <exclude-unlisted-classes>false</exclude-unlisted-classes>-->
+        <class>ru.krista.newbrooklyn.entities.KristaUser</class>
+        <class>ru.krista.newbrooklyn.entities.KristaPost</class>
+        <properties>
+            <!-- jdbc:postgresql://хост:порт/имябазы -->
+            <!-- <property name="hibernate.hbm2ddl.auto" value="update"/> -->
+<!--            <property name="hibernate.show_sql" value="true"/>-->
+<!--            <property name="hibernate.format_sqhibernate.dialectl" value="true"/>-->
+            <property name="current_session_context_class" value="thread"/>
+<!--            <property name="hibernate.connection.url" value="jdbc:postgresql://127.0.0.1:5432/newbrooklyn"/>-->
+<!--            <property name="hibernate.connection.username" value="postgres"/>-->
+<!--            <property name="hibernate.connection.password" value="masterkey"/>-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>
