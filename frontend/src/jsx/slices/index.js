@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 import auth from "./authSlice";
-import message from "./message";
+import books from "./booksSlice";
 
 
 export default {
     auth: auth,
-    //message: message,
+    books: books,
 };

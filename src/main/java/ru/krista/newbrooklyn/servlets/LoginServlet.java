@@ -33,25 +33,27 @@ public class LoginServlet extends HttpServlet {
         response.setHeader("Pragma", "no-cache");
         response.setHeader("Expires", "-1");
         User inputUser = new Gson().fromJson(request.getReader(), User.class);
-        JsonObject myObj = new JsonObject();
+        JsonObject resultObj = new JsonObject();
         //myObj.addProperty("pass", inputUser.getPass());
-        myObj.addProperty("user", inputUser.getEmail());
+        resultObj.addProperty("user", inputUser.getEmail());
         if (inputUser != null && !"".equals(inputUser.getEmail())){
             log.info("Вход пользователя: " + inputUser.getEmail());
             try {
                 User user =  bean.findUserByEmail(inputUser.getEmail());
                 if (user!= null && user.getPass().equals(inputUser.getPass())){
-                    myObj.addProperty("status", "success");
+                    resultObj.addProperty("status", "success");
+                    resultObj.addProperty("name", user.getName());
+                    resultObj.addProperty("age", user.getAge());
+                    request.getSession().setAttribute("user", user.getEmail());
                 }else{
-                    myObj.addProperty("status", "error");
+                    resultObj.addProperty("status", "error");
                 }
-                myObj.addProperty("name", user.getName());
             }catch (Exception e){
                 log.error(e.getMessage(), e);
             }
         }else{
-            myObj.addProperty("status", "not");
+            resultObj.addProperty("status", "not");
         }
-        response.getWriter().write(myObj.toString());
+        response.getWriter().write(resultObj.toString());
     }
 }

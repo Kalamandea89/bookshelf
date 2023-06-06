@@ -30,7 +30,7 @@ public class Book {
     Date publishedDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "author_id", updatable = false)
+    @JoinColumn(name = "author", updatable = false)
     Author author;
 
     public Integer getId() {

@@ -11,7 +11,6 @@ import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-
 @Stateless
 public class BookBean extends AbstractBean<Book> {
 

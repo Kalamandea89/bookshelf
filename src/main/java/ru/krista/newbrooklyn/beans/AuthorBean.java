@@ -34,7 +34,8 @@ public class AuthorBean extends AbstractBean<Author> {
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Author> cq = cb.createQuery(Author.class);
         Root<Author> routeRoot = cq.from(Author.class);
-        routeRoot.fetch("books", JoinType.INNER);
+        routeRoot.fetch("books", JoinType.LEFT);
+        cq.select(routeRoot);
         cq.orderBy(cb.asc(routeRoot.get("id")));
         TypedQuery<Author> q = getEntityManager().createQuery(cq);
         List<Author> authors = q.getResultList();

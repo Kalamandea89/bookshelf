@@ -25,15 +25,11 @@ public class BooksResource {
     public Book create(Book item) {
         bean.create(item);
         return item;
-        //return bean.findWithLazy(item.getId(), "owner");
     }
 
     @Path("{id}")
     //@Path("{year:\\d+}/promise/{budgetClsId:\\d+}")
     @GET
-    /*public Genre getOne(@PathParam("id") Integer id) {
-        return bean.findWithLazy(id, "owner");
-    }*/
     public Book getOne(@PathParam("id") Integer id) {
         return bean.findWithLazy(id, "author");
         //return bean.find(id);
