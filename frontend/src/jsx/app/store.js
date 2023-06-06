@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import logger from 'redux-logger'
 import reducers from '../slices'
-import counterReducer from '../slices/counterSlice';
-import preloadedState from './preloadedState'
+// import logger from 'redux-logger'
+// import counterReducer from '../slices/counterSlice';
+// import preloadedState from './preloadedState'
 
 export default configureStore({
   reducer: reducers,

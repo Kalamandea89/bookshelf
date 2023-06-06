@@ -4,6 +4,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import {useSelector} from "react-redux";
+import './Navigation.css';
 
 function Navigation() {
     //let loc = document.location.toString().split('/')[3];
@@ -11,7 +12,7 @@ function Navigation() {
     let loc = "";
     let content;
     if (user.name != null) {
-        content =<NavLink className="nav-link" to={loc+"/login"}>{user.name}</NavLink>
+        content =<NavLink className="nav-link" to={loc+"/userlist"}>{user.name}</NavLink>
     }else{
         content =<NavLink className="nav-link" to={loc+"/login"}>Войти</NavLink>
     }
@@ -36,7 +37,7 @@ function Navigation() {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" to={loc+"/mybooks"}>
+                                <NavLink className="nav-link" to={loc+"/userbooks"}>
                                     Мои книги
                                 </NavLink>
                             </li>

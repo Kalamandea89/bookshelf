@@ -4,14 +4,12 @@
 
 import React, {useEffect, useState} from "react";
 import { useSelector, useDispatch } from 'react-redux';
-import {useMatch } from 'react-router-dom'
+// import {useLocation , useLoaderData } from 'react-router-dom'
 import { Spinner } from './Spinner.jsx';
 import { fetchBooks, uploadCover } from "../slices/booksSlice";
-import getRandom from "./utils";
 import "./BooksList.css";
 
 const Book = ({ book }) => {
-    let i = getRandom(1, 5);
     const dispatch = useDispatch();
     const [coverFile, setCoverFile] = useState('');
     const handleUpdateCover = () =>{
@@ -43,21 +41,11 @@ const Book = ({ book }) => {
 }
 
 const BooksList = () => {
-    const {booksList, error, status} = useSelector((state) => state.books)
+    const {booksList, error, status, curPath} = useSelector((state) => state.books)
     const dispatch = useDispatch();
-    const routeMatch = useMatch({
-        path: 'books',
-        end: true
-    });
-    console.log(routeMatch ? 'books': 'userbooks');
-
-    useEffect(() => {
-        if (status === 'idle') {
-            // dispatch(fetchBooks(routeMatch))
-            dispatch(fetchBooks(routeMatch ? 'books': 'userbooks'))
-        }
-    }, [status, dispatch])
-
+    //const location = useLocation();
+    //const booksListLoad = useLoaderData();
+    //console.log(location ? 'books': 'userbooks');
     let content;
     if (status === 'loading') {
         content = <Spinner text="Загрузка..." />
@@ -66,8 +54,6 @@ const BooksList = () => {
             return <Book key={book.id} book={book} />
         });
     }
-
-    // content = <div className="text-center my-5">Loading...</div>
     return (
         <div className="container">
             <div className="row align-items-center my-5">

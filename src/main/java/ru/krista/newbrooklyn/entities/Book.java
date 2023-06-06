@@ -68,7 +68,7 @@ public class Book {
     }
 
     @ManyToOne(fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
-    @JoinColumn(name = "author_id", updatable = false)
+    @JoinColumn(name = "author", updatable = false)
     public Author getAuthor() {
         return author;
     }

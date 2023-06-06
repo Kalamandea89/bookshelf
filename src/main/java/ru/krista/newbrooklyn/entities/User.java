@@ -1,5 +1,6 @@
 package ru.krista.newbrooklyn.entities;
 
+import javax.annotation.Nullable;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.Set;
@@ -9,20 +10,19 @@ import java.util.Set;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "pet_seq", sequenceName = "pet_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pet_seq")
     Integer id;
-
-    @NotNull
+    @Nullable
     @Size(min = 3, max = 50)
     String name;
-
-    @NotNull
+    @Nullable
     @Min(0)
     Integer age;
-
+    @NotNull
     @Pattern(regexp = ".*@.*")
     String email;
-
+    @NotNull
     @Size(min = 3, max = 50)
     String pass;
 

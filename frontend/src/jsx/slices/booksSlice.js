@@ -38,7 +38,8 @@ export const uploadCover = createAsyncThunk(
 const initialState = {
     booksList: [],
     status: "idle",
-    error: ""
+    error: "",
+    curPath: ""
 }
 
 export const booksSlice = createSlice({
@@ -48,11 +49,13 @@ export const booksSlice = createSlice({
     extraReducers(builder) {
         builder
             .addCase(fetchBooks.pending, (state, action) => {
+                state.curPath = action.meta.arg;
                 state.status = "loading";
             })
             .addCase(fetchBooks.rejected, (state, action) => {
                 state.status = "failed";
                 state.error = action.error.message;
+                state.booksList = [];
             })
             .addCase(fetchBooks.fulfilled, (state, action) => {
                 console.log(action.payload);
@@ -60,9 +63,10 @@ export const booksSlice = createSlice({
                     ...state,
                     ...action.payload,
                 }*/
+                //state.user.push(action.payload);
+                state.curPath = action.meta.arg;
                 state.status = "successed";
                 state.booksList = action.payload;
-                //state.user.push(action.payload);
             })
             .addCase(uploadCover.fulfilled, (state, action) => {})
             .addCase(uploadCover.pending, (state, action) => {})

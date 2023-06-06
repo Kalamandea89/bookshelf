@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
     private static final Logger log = LogManager.getLogger(LoginServlet.class);
 
     @EJB
-    UserBean bean;
+    UserBean userBean;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -35,18 +35,21 @@ public class LoginServlet extends HttpServlet {
         JsonObject myObj = new JsonObject();
         //myObj.addProperty("pass", inputUser.getPass());
         myObj.addProperty("user", inputUser.getEmail());
+        myObj.addProperty("status", "error");
         if (inputUser != null && !"".equals(inputUser.getEmail())){
             log.info("Вход пользователя: " + inputUser.getEmail());
             try {
-                User user =  bean.findUserByEmail(inputUser.getEmail());
-                if (user!= null && user.getPass().equals(inputUser.getPass())){
-                    HttpSession session = request.getSession();
-                    session.setAttribute("user", user.getId());
-                    myObj.addProperty("status", "success");
+                User user =  userBean.findUserByEmail(inputUser.getEmail());
+                if (user == null){
+                    userBean.create(inputUser);
                 }else{
-                    myObj.addProperty("status", "error");
+                    if(user.getPass().equals(inputUser.getPass())){
+                        HttpSession session = request.getSession();
+                        session.setAttribute("user", user.getId());
+                        myObj.addProperty("status", "success");
+                        myObj.addProperty("name", user.getName());
+                    }
                 }
-                myObj.addProperty("name", user.getName());
             }catch (Exception e){
                 log.error(e.getMessage(), e);
             }
