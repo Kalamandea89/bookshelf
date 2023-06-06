@@ -1,5 +1,23 @@
+div.book-card{
+    margin-bottom: 1em;
+    background-color: #d0d0d0;
+    border-radius: 0.25rem;
+    display: grid;
+    grid-template-columns: 250px auto;
+}
 .book-card-row{
     display: grid;
-    grid-template-columns: 10em auto;
+    grid-template-columns: 10em 20em;
     border-bottom: 1px solid #828282;
+    width: 30em;
+}
+
+img.book-cover{
+    height: 300px;
+    width: 200px;
+}
+button.btn-upload-cover{
+    color: #fff;
+    background-color: #979797;
+    border-color: #979797;
 }

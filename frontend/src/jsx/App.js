@@ -17,8 +17,9 @@ function App() {
               <Navigation/>
               <Routes>
                   <Route index path={loc + '/'} element={<Home />} />
-                  <Route path={loc + "/mybooks"} element={<BooksList />} />
-                  <Route path={loc + "/userlist"}  element={<UsersList />} />
+                  <Route path={loc + "/books"} element={<BooksList />} />
+                  <Route path={loc + "/mybooks"}  element={<BooksList />} />
+                  {/*<Route path={loc + "/mybooks"}  element={<UsersList />} />*/}
                   <Route path={loc + "/login"}  element={<LoginForm />} />
               </Routes>
           </div>

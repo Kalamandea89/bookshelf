@@ -24,18 +24,9 @@ a:hover {
     color: rgba(0, 0, 0, 0.349);
 }
 
-img.user-avatar-list {
-    height: 72px;
-    width: 54px;
-}
 
-div.book-card{
-    margin-bottom: 1em;
-    background-color: #d0d0d0;
-    border-radius: 0.25rem;
-    display: grid;
-    grid-template-columns: 70px auto;
-}
+
+
 /*
 .book-card-row{
     display: grid;
@@ -49,7 +40,7 @@ div.book-card{
     font-size: 10px;
     margin: 10px;
     /* text-indent: -9999em; */
-    width: 5em;
+    width: 50em;
     height: 5em;
     border-radius: 50%;
     background: var(--redux-color);

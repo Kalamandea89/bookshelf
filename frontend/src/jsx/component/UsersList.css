@@ -1,0 +1,22 @@
+img.user-avatar-list {
+    height: 72px;
+    width: 54px;
+}
+
+div.user-card{
+    margin-bottom: 1em;
+    background-color: #d0d0d0;
+    border-radius: 0.25rem;
+    display: grid;
+    grid-template-columns: 5px 60px auto;
+}
+.user-card-row{
+    display: grid;
+    grid-template-columns: 10em auto;
+    border-bottom: 1px solid #828282;
+}
+
+img.user-avatar-list {
+    height: 72px;
+    width: 54px;
+}

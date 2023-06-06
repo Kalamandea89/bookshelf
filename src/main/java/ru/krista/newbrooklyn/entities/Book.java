@@ -15,20 +15,11 @@ import java.sql.Blob;
 @Entity(name = "Book")
 @Table(name = "b_books")
 public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     Integer id;
-
-    @NotNull
-    @Size(min = 1, max = 250)
     String title;
-
-    @Size(min = 1, max = 950)
     String description;
-
-    Integer genre;
-
-    @Column(name = "published_date")
+    Genre genre;
     Date publishedDate;
 
     @Lob
@@ -36,10 +27,10 @@ public class Book {
     @Column(name = "cover")
     byte[] cover;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "author_id", updatable = false)
     Author author;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -48,6 +39,8 @@ public class Book {
         this.id = id;
     }
 
+    @NotNull
+    @Size(min = 1, max = 250)
     public String getTitle() {
         return title;
     }
@@ -56,6 +49,7 @@ public class Book {
         this.title = title;
     }
 
+    @Size(min = 1, max = 950)
     public String getDescription() {
         return description;
     }
@@ -64,6 +58,7 @@ public class Book {
         this.description = description;
     }
 
+    @Column(name = "published_date")
     public Date getPublishedDate() {
         return publishedDate;
     }
@@ -72,7 +67,7 @@ public class Book {
         this.publishedDate = publishedDate;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY,  cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id", updatable = false)
     public Author getAuthor() {
         return author;
@@ -82,11 +77,13 @@ public class Book {
         this.author = author;
     }
 
-    public Integer getGenre() {
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "genre", updatable = false)
+    public Genre getGenre() {
         return genre;
     }
 
-    public void setGenre(Integer genre) {
+    public void setGenre(Genre genre) {
         this.genre = genre;
     }
 

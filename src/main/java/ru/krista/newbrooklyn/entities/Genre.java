@@ -7,21 +7,16 @@ import javax.validation.constraints.*;
 @Entity(name = "Genre")
 @Table(name = "b_genres")
 public class Genre {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Integer id;
-
-    @NotNull
-    @Size(min = 1, max = 250)
-    String name;
-
-    @Size(min = 1, max = 950)
-    String description;
+    private Integer id;
+    private String name;
+    private String description;
 
     /*@ManyToOne(fetch = FetchType.LAZY)
     @Valid
     GBUser owner;*/
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -30,6 +25,8 @@ public class Genre {
         this.id = id;
     }
 
+    @NotNull
+    @Size(min = 1, max = 250)
     public String getName() {
         return name;
     }
@@ -38,6 +35,7 @@ public class Genre {
         this.name = name;
     }
 
+    @Size(min = 1, max = 950)
     public String getDescription() {
         return description;
     }

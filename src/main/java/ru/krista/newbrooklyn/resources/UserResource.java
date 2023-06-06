@@ -4,7 +4,10 @@ import ru.krista.newbrooklyn.beans.UserBean;
 import ru.krista.newbrooklyn.entities.User;
 
 import javax.ejb.EJB;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.ws.rs.*;
+import javax.ws.rs.core.Context;
 import java.util.List;
 
 @Path("users")
@@ -14,6 +17,9 @@ public class UserResource {
 
     @EJB
     UserBean bean;
+
+    @Context
+    private HttpServletRequest request;
 
     @GET
     public List<User> getAll() {
@@ -31,9 +37,11 @@ public class UserResource {
     public User getOne(@PathParam("id") Integer id) {
         return bean.find(id);
     }
+
     @Path("{email}")
     @GET
     public User getOneByEmail(@PathParam("email") String email) {
+        HttpSession session = request.getSession();
         return bean.find(email);
     }
 

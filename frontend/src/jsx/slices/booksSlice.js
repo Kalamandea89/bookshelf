@@ -2,8 +2,8 @@ import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
 
 export const fetchBooks = createAsyncThunk(
     'books/fetchBooks',
-    async (user) => {
-        const response = await fetch('rest/books', {
+    async (location) => {
+        const response = await fetch('rest/' + location, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json','Accept': 'application/json'

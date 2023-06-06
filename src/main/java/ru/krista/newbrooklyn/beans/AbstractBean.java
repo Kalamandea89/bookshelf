@@ -35,7 +35,6 @@ public abstract class AbstractBean<T> {
     }
 
     public List<T> findAll() {
-        log.info("Stas");
         log.info(getEntityManager().getProperties().toString());
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<T> cq = cb.createQuery(entityClass);

@@ -3,7 +3,6 @@
  */
 import React from "react";
 import { NavLink } from "react-router-dom";
-import LoginForm from "./LoginForm.jsx";
 import {useSelector} from "react-redux";
 
 function Navigation() {
@@ -21,24 +20,24 @@ function Navigation() {
             <nav className="navbar navbar-expand navbar-dark bg-dark">
                 <div className="container">
                     <NavLink className="navbar-brand" to={loc+"/"}>
-                        Картотека книг
+                        Книжная полка
                     </NavLink>
                     <div>
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
                                 <NavLink className="nav-link" to={loc+"/"}>
-                                    Книги
+                                    Каталог
                                     <span className="sr-only">(current)</span>
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to={loc+"/books"}>
+                                    Книги
                                 </NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink className="nav-link" to={loc+"/mybooks"}>
                                     Мои книги
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to={loc+"/contact"}>
-                                    Контакты
                                 </NavLink>
                             </li>
                             <li className="nav-item">

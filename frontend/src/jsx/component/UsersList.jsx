@@ -3,7 +3,7 @@
  */
 import React from "react";
 import getRandom from './utils.js';
-
+import './UsersList.css';
 class User extends React.Component {
     constructor(props){
         super(props);
@@ -12,7 +12,7 @@ class User extends React.Component {
     render(){
         let i = getRandom(1, 5);
         return(
-            <div className="book-card">
+            <div className="user-card">
                 <i className={"glyphicon glyphicon-"}></i>
                 <img
                     src={`./img/user${  i  }.jpg`}  //user.png"
@@ -20,8 +20,8 @@ class User extends React.Component {
                     alt=""
                 />
                 <div>
-                    <div className="book-card-row"><span>Имя</span><span>{this.props.data.name}</span></div>
-                    <div className="book-card-row"><span>Почта</span><span>{this.props.data.email}</span></div>
+                    <div className="user-card-row"><span>Имя</span><span>{this.props.data.name}</span></div>
+                    <div className="user-card-row"><span>Почта</span><span>{this.props.data.email}</span></div>
                 </div>
             </div>
         )
@@ -46,22 +46,20 @@ class UsersList extends React.Component {
     }
     render(){
         return (
-            <div className="about">
-                <div className="container">
-                    <div className="row align-items-center my-5">
-                        <div className="col-lg-7">
-                            <img
-                                className="img-fluid rounded mb-4 mb-lg-0"
-                                src=""
-                                alt=""
-                            />
-                        </div>
-                        <div className="col-lg-5">
-                            <h1 className="font-weight-light">About</h1>
-                        </div>
+            <div className="container">
+                <div className="row align-items-center my-5">
+                    <div className="col-lg-7">
+                        <img
+                            className="img-fluid rounded mb-4 mb-lg-0"
+                            src=""
+                            alt=""
+                        />
                     </div>
-                    {this.state.dataList.map(this.renderListItem)}
+                    <div className="col-lg-5">
+                        <h1 className="font-weight-light">Список пользователей</h1>
+                    </div>
                 </div>
+                {this.state.dataList.map(this.renderListItem)}
             </div>
         )
     }

@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -39,6 +40,8 @@ public class LoginServlet extends HttpServlet {
             try {
                 User user =  bean.findUserByEmail(inputUser.getEmail());
                 if (user!= null && user.getPass().equals(inputUser.getPass())){
+                    HttpSession session = request.getSession();
+                    session.setAttribute("user", user.getId());
                     myObj.addProperty("status", "success");
                 }else{
                     myObj.addProperty("status", "error");
