@@ -3,6 +3,7 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TransformRuntime= require("@babel/plugin-transform-runtime");
 
 let generatedHtmlPath = 'target/generated-resources/frontend/';
 const sourceForntend = 'frontend/src/';
@@ -58,7 +59,11 @@ const plugins = () => {
                     from: path.resolve(__dirname, sourceForntend +'fonts/'),
                     to: path.resolve(__dirname, generatedHtmlPath + 'fonts/')
                 }
-            ]})
+            ]}),
+        /*new TransformRuntime({
+            "regenerator": true
+        })*/
+
         /*new CopyWebpackPlugin({
             patterns:[
                 {
@@ -115,7 +120,13 @@ module.exports = {
                 use: {
 					loader: 'babel-loader',
 					options:{
-						presets:["@babel/preset-env", "@babel/preset-react"]    // используемые плагины
+						presets:["@babel/preset-env", "@babel/preset-react" ],    // используемые плагины
+                        plugins: [
+                            ["@babel/plugin-transform-runtime",
+                            {
+                                "regenerator": true
+                            }]
+                        ]
 					}
                 }
                 
