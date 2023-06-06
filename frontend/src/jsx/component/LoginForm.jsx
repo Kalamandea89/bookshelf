@@ -13,7 +13,7 @@ const LoginForm = () => {
     const dispatch = useDispatch();
     // const status = useSelector(signinUserStatus);
     const { user, error, status } = useSelector((state) => state.auth)
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const [userId, setUserName] = useState('');
     const [userPass, setPassword] = useState('');
 
@@ -22,13 +22,13 @@ const LoginForm = () => {
         try {
             //dispatch(deletePost({ id })).unwrap();
             dispatch(fetchUserByEmail({"userEmail":userId,"userPass":userPass})).then(unwrapResult)
-                .then((result) => {
-                    if(result.status == "success"){
-                        navigate('/')
-                    }else{
-                        alert("Неверный логин/пароль")
-                    }
-                });
+                .then((result) => {if(result.status == "success"){
+                    navigate('/')
+                }});
+            console.log(status);
+            if (status == "successed"){
+                //navigate(document.location.toString().split('/')[3]);
+            }
             let content;
             if (status === "loading") {
                 content = <div className="text-center my-5">Loading...</div>

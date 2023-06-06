@@ -12,7 +12,7 @@ class User extends React.Component {
     render(){
         let i = getRandom(1, 5);
         return(
-            <div className="user-card">
+            <div className="book-card">
                 <i className={"glyphicon glyphicon-"}></i>
                 <img
                     src={`./img/user${  i  }.jpg`}  //user.png"
@@ -20,8 +20,8 @@ class User extends React.Component {
                     alt=""
                 />
                 <div>
-                    <div className="user-card-row"><span>Имя</span><span>{this.props.data.name}</span></div>
-                    <div className="user-card-row"><span>Почта</span><span>{this.props.data.email}</span></div>
+                    <div className="book-card-row"><span>Имя</span><span>{this.props.data.name}</span></div>
+                    <div className="book-card-row"><span>Почта</span><span>{this.props.data.email}</span></div>
                 </div>
             </div>
         )

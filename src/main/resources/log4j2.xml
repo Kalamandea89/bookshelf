@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="info">
+<Configuration status="warn">
 	<Properties>
-		<Property name="basePath">${sys:jboss.home}</Property>
+		<Property name="basePath">${sys:catalina.home}</Property>
 	</Properties>
 
 	<Appenders>
 		<RollingFile name="fileLogger"
-			fileName="C:\wildfly-24.0.1.Final\standalone\log\books-service.log"
-			filePattern="C:\wildfly-24.0.1.Final\standalone\log\books-service\books-service-%d{yyyy-MM-dd}.log.gz">
+			fileName="X:\wildfly-25.0.0.Beta1\standalone\log\books-service.log"
+			filePattern="X:\wildfly-25.0.0.Beta1\standalone\log\books-service\books-service-%d{yyyy-MM-dd}.log">
 			<PatternLayout>
 				<pattern>[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %c{1} - %msg%n
 				</pattern>

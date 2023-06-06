@@ -1,10 +1,10 @@
 package ru.krista.newbrooklyn.beans;
 
+import ru.krista.newbrooklyn.entities.Book;
 import ru.krista.newbrooklyn.entities.User;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -28,12 +28,8 @@ public class UserBean extends AbstractBean<User> {
     public User findUserByEmail(String email) {
         TypedQuery<User> q = em.createQuery("FROM User U WHERE U.email = :email", User.class);
         q.setParameter("email", email);
-        try{
-            return q.getSingleResult();
-        }catch (NoResultException npe){
-
-        }
-        return null;
+        return q.getSingleResult();
+        //List<User> userList = q.getResultList();
         //return userList != null && (userList.size() !=0) && userList.get(0).getPass().equals(password);
     }
 }

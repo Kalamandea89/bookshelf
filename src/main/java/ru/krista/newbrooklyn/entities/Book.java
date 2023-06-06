@@ -1,10 +1,12 @@
 package ru.krista.newbrooklyn.entities;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
-import java.util.Set;
+import java.sql.Blob;
 
 /*@NamedEntityGraph(
         name = "graph.books",
@@ -29,8 +31,13 @@ public class Book {
     @Column(name = "published_date")
     Date publishedDate;
 
+    @Lob
+    @Type(type = "org.hibernate.type.BinaryType")
+    @Column(name = "cover")
+    byte[] cover;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "author", updatable = false)
+    @JoinColumn(name = "author_id", updatable = false)
     Author author;
 
     public Integer getId() {
@@ -81,5 +88,13 @@ public class Book {
 
     public void setGenre(Integer genre) {
         this.genre = genre;
+    }
+
+    public byte[] getCover() {
+        return cover;
+    }
+
+    public void setCover(byte[] cover) {
+        this.cover = cover;
     }
 }

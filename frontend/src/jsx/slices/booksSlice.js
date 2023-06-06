@@ -4,7 +4,7 @@ export const fetchBooks = createAsyncThunk(
     'books/fetchBooks',
     async (user) => {
         const response = await fetch('rest/books', {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json','Accept': 'application/json'
             }
@@ -13,13 +13,35 @@ export const fetchBooks = createAsyncThunk(
     }
 );
 
+export const uploadCover = createAsyncThunk(
+    'book/uploadCover',
+    async (book) => {
+        //console.log(book.bookid);
+        console.log(book.cover);
+        const formData = new FormData();
+        formData.append('cover', book.cover);
+        formData.append("bookid", book.bookid);
+        //const response  = await fetch(`uploadcover?bookid=${ book.bookid }`, {
+        /*,
+            headers: {
+                'Content-Type': 'multipart/form-data; charset="utf-8"',
+            }
+        * */
+        const response  = await fetch("uploadcover", {
+            method: 'POST',
+            body: formData
+        });
+        return response.json();
+    }
+);
+
 const initialState = {
-    booksList: {},
+    booksList: [],
     status: "idle",
     error: ""
 }
 
-export const authSlice = createSlice({
+export const booksSlice = createSlice({
     name: 'books',
     initialState,
     reducers: {},
@@ -42,5 +64,10 @@ export const authSlice = createSlice({
                 state.booksList = action.payload;
                 //state.user.push(action.payload);
             })
+            .addCase(uploadCover.fulfilled, (state, action) => {})
+            .addCase(uploadCover.pending, (state, action) => {})
+            .addCase(uploadCover.rejected, (state, action) => {})
     }
 });
+
+export default booksSlice.reducer

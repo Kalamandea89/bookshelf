@@ -1,6 +1,5 @@
 package ru.krista.newbrooklyn.beans;
 
-import ru.krista.newbrooklyn.entities.Author;
 import ru.krista.newbrooklyn.entities.Book;
 
 import javax.ejb.Stateless;
@@ -10,6 +9,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Root;
 import java.util.List;
+
 
 @Stateless
 public class BookBean extends AbstractBean<Book> {
@@ -36,7 +36,12 @@ public class BookBean extends AbstractBean<Book> {
         cq.select(routeRoot);
         cq.orderBy(cb.asc(routeRoot.get("id")));
         TypedQuery<Book> q = em.createQuery(cq);
-        List<Book> books = q.getResultList();
-        return books;
+        return q.getResultList();
+    }
+
+    public void uploadCover(int bookId, byte[] cover){
+        Book book = findWithLazy(bookId, "author");
+        book.setCover(cover);
+        edit(book);
     }
 }

@@ -31,6 +31,11 @@ public class UserResource {
     public User getOne(@PathParam("id") Integer id) {
         return bean.find(id);
     }
+    @Path("{email}")
+    @GET
+    public User getOneByEmail(@PathParam("email") String email) {
+        return bean.find(email);
+    }
 
 
     @Path("{id}")

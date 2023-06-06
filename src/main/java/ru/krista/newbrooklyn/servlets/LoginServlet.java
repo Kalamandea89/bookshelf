@@ -25,35 +25,31 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
-
         response.setContentType("application/json");
         response.setCharacterEncoding(UTF_8.name());
         response.setHeader("Cache-control", "no-cache, no-store");
         response.setHeader("Pragma", "no-cache");
         response.setHeader("Expires", "-1");
         User inputUser = new Gson().fromJson(request.getReader(), User.class);
-        JsonObject resultObj = new JsonObject();
+        JsonObject myObj = new JsonObject();
         //myObj.addProperty("pass", inputUser.getPass());
-        resultObj.addProperty("user", inputUser.getEmail());
+        myObj.addProperty("user", inputUser.getEmail());
         if (inputUser != null && !"".equals(inputUser.getEmail())){
             log.info("Вход пользователя: " + inputUser.getEmail());
             try {
                 User user =  bean.findUserByEmail(inputUser.getEmail());
                 if (user!= null && user.getPass().equals(inputUser.getPass())){
-                    resultObj.addProperty("status", "success");
-                    resultObj.addProperty("name", user.getName());
-                    resultObj.addProperty("age", user.getAge());
-                    request.getSession().setAttribute("user", user.getEmail());
+                    myObj.addProperty("status", "success");
                 }else{
-                    resultObj.addProperty("status", "error");
+                    myObj.addProperty("status", "error");
                 }
+                myObj.addProperty("name", user.getName());
             }catch (Exception e){
                 log.error(e.getMessage(), e);
             }
         }else{
-            resultObj.addProperty("status", "not");
+            myObj.addProperty("status", "not");
         }
-        response.getWriter().write(resultObj.toString());
+        response.getWriter().write(myObj.toString());
     }
 }

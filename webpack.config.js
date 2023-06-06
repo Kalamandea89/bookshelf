@@ -7,7 +7,8 @@ const TransformRuntime= require("@babel/plugin-transform-runtime");
 
 let generatedHtmlPath = 'target/generated-resources/frontend/';
 const sourceForntend = 'frontend/src/';
-// const isDevelopment = process.env.NODE_ENV === 'development';
+//const isDevelopment = process.env.NODE_ENV === 'development';
+//target: process.env.NODE_ENV === "development" ? "web" : "browserslist",
 const isDevelopment = true;
 const isProduction = !isDevelopment;
 
@@ -78,9 +79,10 @@ const plugins = () => {
                 to: path.resolve(__dirname, generatedHtmlPath + 'js/')
             }
         ])*/
-        /*new MiniCssExtractPlugin({
+        new MiniCssExtractPlugin({}),
+        /*{
             filename: filename('css')
-        })*/
+        }*/
     ];
 
     if (isProduction) {
@@ -112,7 +114,7 @@ module.exports = {
         rules: [
             {
                 test: /\.css$/,
-                use: cssLoaders()
+                use: [MiniCssExtractPlugin.loader, "css-loader"], // cssLoaders()
             },
             {
                 test: /\.(js|jsx)$/,
