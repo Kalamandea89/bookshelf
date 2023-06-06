@@ -4,9 +4,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import LoginForm from "./LoginForm.jsx";
+import {useSelector} from "react-redux";
 
 function Navigation() {
-    let loc = document.location.toString().split('/')[3];
+    //let loc = document.location.toString().split('/')[3];
+    const { user, error, status } = useSelector((state) => state.auth);
+    let loc = "";
+    let content;
+    if (user.name != null) {
+        content =<NavLink className="nav-link" to={loc+"/login"}>{user.name}</NavLink>
+    }else{
+        content =<NavLink className="nav-link" to={loc+"/login"}>Войти</NavLink>
+    }
     return (
         <div className="navigation">
             <nav className="navbar navbar-expand navbar-dark bg-dark">
@@ -33,9 +42,7 @@ function Navigation() {
                                 </NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink className="nav-link" to={loc+"/login"}>
-                                    Войти
-                                </NavLink>
+                                {content}
                             </li>
                         </ul>
                     </div>

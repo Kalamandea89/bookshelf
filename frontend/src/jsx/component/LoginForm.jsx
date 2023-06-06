@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { unwrapResult } from '@reduxjs/toolkit'
@@ -9,28 +9,25 @@ import {signinUser, signinUserStatus} from "../reducers/authSlice";
 /**
  * Created by volchenkov on 27.04.2023.
  */
-//function LoginForm() => {
 const LoginForm = () => {
     const dispatch = useDispatch();
     // const status = useSelector(signinUserStatus);
     const { user, error, status } = useSelector((state) => state.auth)
-    //const status = useSelector((state) => state.auth);
     const navigate = useNavigate()
+    const [userId, setUserName] = useState('');
+    const [userPass, setPassword] = useState('');
 
     const handleSubmit = () => {
-        // const status = useSelector(signinUserStatus);
         //const status = "";
-        //<form onSubmit={handleSubmit}>
         try {
             //dispatch(deletePost({ id })).unwrap();
-            dispatch(fetchUserByEmail({"userEmail":"ivan@test.ru","userPass":"123"})).then(unwrapResult)
+            dispatch(fetchUserByEmail({"userEmail":userId,"userPass":userPass})).then(unwrapResult)
                 .then((result) => {if(result.status == "success"){
-                    // navigate(document.location.toString().split('/')[3])
-                    navigate('..')
+                    navigate('/')
                 }});
             console.log(status);
-            if (status == "success"){
-                navigate(document.location.toString().split('/')[3]);
+            if (status == "successed"){
+                //navigate(document.location.toString().split('/')[3]);
             }
             let content;
             if (status === "loading") {

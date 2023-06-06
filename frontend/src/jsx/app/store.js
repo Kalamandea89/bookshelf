@@ -6,7 +6,7 @@ import preloadedState from './preloadedState'
 
 export default configureStore({
   reducer: reducers,
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  //middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 
 // devTools: process.env.NODE_ENV !== 'production',

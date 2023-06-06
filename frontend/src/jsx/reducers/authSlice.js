@@ -29,9 +29,9 @@ export const authSlice = createSlice({
             return fetch('loginweb', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json','Accept': 'application/json'
+                    'Content-Type': 'application/json', 'Accept': 'application/json'
                 },
-                body:  JSON.stringify({email: "ivan@test.ru55", pass: "123"})
+                body: JSON.stringify({email: "ivan@test.ru55", pass: "123"})
             }).then((response) => response.json())
                 .then(data => console.log(data))
 
@@ -40,23 +40,22 @@ export const authSlice = createSlice({
             return fetch('loginweb', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json','Accept': 'application/json'
+                    'Content-Type': 'application/json', 'Accept': 'application/json'
                 },
-                body:  JSON.stringify({email: "ivan@test.ru55", pass: "123"})
+                body: JSON.stringify({email: "ivan@test.ru55", pass: "123"})
             }).then((response) => response.json())
                 .then(data => console.log(data))
         },
-        extraReducers(builder) {
+    },
+    extraReducers(builder) {
             // Добавляем редукторы для дополнительных операций и обрабатываем состояние загрузки
             builder
                 .addCase(fetchUserByEmail.pending, (state, action) => {
                     state.status = "loading";
-                    console.log(state.status);
                 })
                 .addCase(fetchUserByEmail.rejected, (state, action) => {
                     state.status = "failed";
                     state.error = action.error.message;
-                    console.log(state.status);
                 })
                 .addCase(fetchUserByEmail.fulfilled, (state, action) => {
                     console.log(action.payload);
@@ -64,14 +63,12 @@ export const authSlice = createSlice({
                         ...state,
                         ...action.payload,
                     }*/
-                    state.status = "succeeded";
-                    console.log(action.payload);
-                    console.log(state.status);
+                    state.status = "successed";
                     state.user = action.payload;
                     //state.user.push(action.payload);
                 })
         }
-    }
+
 })
 export const {register, login} = authSlice.actions;
 export const signinUser = (state) => state.signin.user;

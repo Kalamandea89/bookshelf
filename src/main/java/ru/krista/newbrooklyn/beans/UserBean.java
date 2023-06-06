@@ -25,11 +25,11 @@ public class UserBean extends AbstractBean<User> {
         return em;
     }
 
-    public Boolean validate(String email, String password) {
+    public User findUserByEmail(String email) {
         TypedQuery<User> q = em.createQuery("FROM User U WHERE U.email = :email", User.class);
         q.setParameter("email", email);
-        List<User> userList = q.getResultList();
-
-        return userList != null && (userList.size() !=0) && userList.get(0).getPass().equals(password);
+        return q.getSingleResult();
+        //List<User> userList = q.getResultList();
+        //return userList != null && (userList.size() !=0) && userList.get(0).getPass().equals(password);
     }
 }

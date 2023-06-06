@@ -39,12 +39,13 @@ public class LoginServlet extends HttpServlet {
         if (inputUser != null && !"".equals(inputUser.getEmail())){
             log.info("Вход пользователя: " + inputUser.getEmail());
             try {
-                if (bean.validate(inputUser.getEmail(), inputUser.getPass())){
+                User user =  bean.findUserByEmail(inputUser.getEmail());
+                if (user!= null && user.getPass().equals(inputUser.getPass())){
                     myObj.addProperty("status", "success");
                 }else{
                     myObj.addProperty("status", "error");
                 }
-                myObj.addProperty("name", inputUser.getName());
+                myObj.addProperty("name", user.getName());
             }catch (Exception e){
                 log.error(e.getMessage(), e);
             }
