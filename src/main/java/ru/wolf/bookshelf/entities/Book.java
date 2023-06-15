@@ -21,9 +21,7 @@ public class Book {
     Genre genre;
     Date publishedDate;
 
-    @Lob
-    @Type(type = "org.hibernate.type.BinaryType")
-    @Column(name = "cover")
+
     byte[] cover;
 
     Author author;
@@ -86,6 +84,9 @@ public class Book {
         this.genre = genre;
     }
 
+    @Lob
+    @Type(type = "org.hibernate.type.BinaryType")
+    @Column(name = "cover")
     public byte[] getCover() {
         return cover;
     }

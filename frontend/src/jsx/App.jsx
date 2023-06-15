@@ -6,8 +6,8 @@ import BooksList from "./component/BooksList.jsx"
 import Navigation from "./component/Navigation.jsx"
 import LoginForm from "./component/LoginForm.jsx"
 import {fetchBooks} from "./slices/booksSlice";
-// import Contact from "./component/Contact.jsx"
 import UsersList from "./component/UsersList.jsx"
+import UserCard from "./component/UserCard.jsx"
 
 const HeaderLayout = () => (
   <div>
@@ -18,8 +18,6 @@ const HeaderLayout = () => (
 
 function App() {
   let loc = document.location.toString().split('/')[3];
-  //const {booksList, error, status} = useSelector((state) => state.books);
-  //const {user} = useSelector((state) => state.auth);
   return (
       <BrowserRouter>
           <div>
@@ -41,9 +39,10 @@ function App() {
                              dispatch(fetchBooks("userbooks"))
                              return booksList;
                          }}
-                         element={<BooksList />} />                  
+                         element={<BooksList />} />
+                  <Route path={loc + "/user"}  element={<UserCard/>} />
                   <Route path={loc + "/login"}  element={<LoginForm />} />
-				  <Route path={loc + "/userlist"}  element={<UsersList />} /> 
+                  <Route path={loc + "/userlist"}  element={<UsersList />} />
               </Routes>
           </div>
       </BrowserRouter>
@@ -86,6 +85,10 @@ function App2() {
                 {
                     path: "/userlist",
                     element: <UsersList />
+                },
+                {
+                    path: "/user",
+                    element: <UserCard />
                 },
             ]
         }

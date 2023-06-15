@@ -25,17 +25,6 @@ a:hover {
 }
 
 
-
-
-/*
-.book-card-row{
-    display: grid;
-    grid-template-columns: 10em auto;
-    border-bottom: 1px solid #828282;
-}
-
- */
-
 .loader {
     font-size: 10px;
     margin: 10px;

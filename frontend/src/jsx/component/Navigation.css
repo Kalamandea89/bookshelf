@@ -23,6 +23,6 @@ li a:hover:not(.active) {
     background-color: #212529;
 }
 
-.active {
+.active:not(.navbar-brand) {
     background-color: #999999;
 }

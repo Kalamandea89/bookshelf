@@ -12,7 +12,7 @@ function Navigation() {
     let loc = "";
     let content;
     if (user.name != null) {
-        content =<NavLink className="nav-link" to={loc+"/userlist"}>{user.name}</NavLink>
+        content =<NavLink className="nav-link" to={loc+"/user"}>{user.name}</NavLink>
     }else{
         content =<NavLink className="nav-link" to={loc+"/login"}>Войти</NavLink>
     }

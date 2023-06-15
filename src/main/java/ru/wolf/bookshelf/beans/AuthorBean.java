@@ -35,8 +35,6 @@ public class AuthorBean extends AbstractBean<Author> {
         routeRoot.fetch("books", JoinType.INNER);
         cq.orderBy(cb.asc(routeRoot.get("id")));
         TypedQuery<Author> q = getEntityManager().createQuery(cq);
-        List<Author> authors = q.getResultList();
-        //em.getTransaction().commit();
-        return authors;
+        return q.getResultList();
     }
 }

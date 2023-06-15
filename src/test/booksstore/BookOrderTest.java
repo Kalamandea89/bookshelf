@@ -17,6 +17,6 @@ public class BookOrderTest extends Assert {
         doReturn(genre).when(book).getGenre();
         doReturn("test").when(book).getTitle();
         assertEquals("test", book.getTitle());
-//        assertEquals(genre, book.getGenre());
+        assertEquals(genre, book.getGenre());
     }
 }

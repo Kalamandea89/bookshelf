@@ -48,6 +48,8 @@ public class LoginServlet extends HttpServlet {
                         session.setAttribute("user", user.getId());
                         myObj.addProperty("status", "success");
                         myObj.addProperty("name", user.getName());
+                        myObj.addProperty("email", user.getEmail());
+                        myObj.addProperty("age", user.getAge());
                     }
                 }
             }catch (Exception e){
