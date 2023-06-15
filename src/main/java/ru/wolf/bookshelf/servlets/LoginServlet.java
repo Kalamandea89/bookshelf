@@ -1,11 +1,11 @@
-package ru.krista.newbrooklyn.servlets;
+package ru.wolf.bookshelf.servlets;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.krista.newbrooklyn.beans.UserBean;
-import ru.krista.newbrooklyn.entities.User;
+import ru.wolf.bookshelf.beans.UserBean;
+import ru.wolf.bookshelf.entities.User;
 
 import javax.ejb.EJB;
 import javax.servlet.annotation.WebServlet;

@@ -1,6 +1,6 @@
-package ru.krista.newbrooklyn.beans;
+package ru.wolf.bookshelf.beans;
 
-import ru.krista.newbrooklyn.entities.Genre;
+import ru.wolf.bookshelf.entities.Genre;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

@@ -1,7 +1,7 @@
-package ru.krista.newbrooklyn.resources;
+package ru.wolf.bookshelf.resources;
 
-import ru.krista.newbrooklyn.beans.GenreBean;
-import ru.krista.newbrooklyn.entities.Genre;
+import ru.wolf.bookshelf.beans.GenreBean;
+import ru.wolf.bookshelf.entities.Genre;
 
 import javax.ejb.EJB;
 import javax.ws.rs.*;

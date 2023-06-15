@@ -1,10 +1,9 @@
-package ru.krista.newbrooklyn.entities;
+package ru.wolf.bookshelf.entities;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
-import java.util.Set;
 
 /*@NamedEntityGraph(
         name = "graph.authors",

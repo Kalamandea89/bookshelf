@@ -1,4 +1,4 @@
-package ru.krista.newbrooklyn.servlets;
+package ru.wolf.bookshelf.servlets;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

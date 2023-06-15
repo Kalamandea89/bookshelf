@@ -1,9 +1,7 @@
-package ru.krista.newbrooklyn.resources;
+package ru.wolf.bookshelf.resources;
 
-import ru.krista.newbrooklyn.beans.BookBean;
-import ru.krista.newbrooklyn.beans.UserBooksBean;
-import ru.krista.newbrooklyn.entities.Book;
-import ru.krista.newbrooklyn.entities.UserBooks;
+import ru.wolf.bookshelf.beans.UserBooksBean;
+import ru.wolf.bookshelf.entities.Book;
 
 import javax.ejb.EJB;
 import javax.servlet.http.HttpServletRequest;

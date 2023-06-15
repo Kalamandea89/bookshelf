@@ -1,4 +1,4 @@
-package ru.krista.newbrooklyn;
+package ru.wolf.bookshelf;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

@@ -1,28 +1,14 @@
-package ru.krista.newbrooklyn.beans;
+package ru.wolf.bookshelf.beans;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.StatelessSession;
-import ru.krista.newbrooklyn.entities.Book;
-import ru.krista.newbrooklyn.entities.UserBooks;
+import ru.wolf.bookshelf.entities.Book;
+import ru.wolf.bookshelf.entities.UserBooks;
 
-import javax.ejb.Stateful;
 import javax.ejb.Stateless;
-import javax.inject.Inject;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.JoinType;
-import javax.persistence.criteria.Root;
-import javax.persistence.metamodel.EntityType;
-import javax.persistence.metamodel.Metamodel;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Stateless

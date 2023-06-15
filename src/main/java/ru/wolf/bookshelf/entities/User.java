@@ -1,4 +1,4 @@
-package ru.krista.newbrooklyn.entities;
+package ru.wolf.bookshelf.entities;
 
 import javax.annotation.Nullable;
 import javax.persistence.*;

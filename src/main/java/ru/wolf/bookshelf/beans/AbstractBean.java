@@ -1,4 +1,4 @@
-package ru.krista.newbrooklyn.beans;
+package ru.wolf.bookshelf.beans;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;

@@ -2,9 +2,8 @@ package booksstore;
 
 import org.junit.Test;
 import junit.framework.Assert;
-import ru.krista.newbrooklyn.beans.BookBean;
-import ru.krista.newbrooklyn.entities.Book;
-import ru.krista.newbrooklyn.entities.Genre;
+import ru.wolf.bookshelf.entities.Book;
+import ru.wolf.bookshelf.entities.Genre;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.doReturn;

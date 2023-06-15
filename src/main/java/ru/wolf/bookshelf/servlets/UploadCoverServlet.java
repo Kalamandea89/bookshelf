@@ -1,10 +1,10 @@
-package ru.krista.newbrooklyn.servlets;
+package ru.wolf.bookshelf.servlets;
 
 import com.google.common.io.ByteStreams;
 import com.google.gson.JsonObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.krista.newbrooklyn.beans.BookBean;
+import ru.wolf.bookshelf.beans.BookBean;
 
 import javax.ejb.EJB;
 import javax.servlet.annotation.MultipartConfig;
@@ -16,7 +16,6 @@ import javax.servlet.http.Part;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collection;
-import java.util.List;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 

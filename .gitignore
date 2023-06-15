@@ -129,3 +129,4 @@ dist
 # Maven
 target/
 .idea/
+build.bat

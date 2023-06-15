@@ -1,4 +1,4 @@
-package ru.krista.newbrooklyn.entities;
+package ru.wolf.bookshelf.entities;
 
 import org.hibernate.annotations.Type;
 
@@ -6,7 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
-import java.sql.Blob;
 
 /*@NamedEntityGraph(
         name = "graph.books",

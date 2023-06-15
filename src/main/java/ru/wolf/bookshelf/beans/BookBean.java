@@ -1,8 +1,8 @@
-package ru.krista.newbrooklyn.beans;
+package ru.wolf.bookshelf.beans;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import ru.krista.newbrooklyn.entities.Book;
+import ru.wolf.bookshelf.entities.Book;
 
 import javax.ejb.Stateless;
 import javax.persistence.*;

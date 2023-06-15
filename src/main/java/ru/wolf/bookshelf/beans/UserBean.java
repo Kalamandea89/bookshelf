@@ -1,12 +1,12 @@
-package ru.krista.newbrooklyn.beans;
+package ru.wolf.bookshelf.beans;
 
-import ru.krista.newbrooklyn.entities.User;
+import ru.wolf.bookshelf.entities.User;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import java.util.List;
 
 @Stateless
 public class UserBean extends AbstractBean<User> {

@@ -1,10 +1,8 @@
-package ru.krista.newbrooklyn.beans;
+package ru.wolf.bookshelf.beans;
 
-import ru.krista.newbrooklyn.entities.Author;
-import ru.krista.newbrooklyn.entities.Book;
+import ru.wolf.bookshelf.entities.Author;
 
 import javax.ejb.Stateless;
-import javax.persistence.EntityGraph;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
