@@ -3,16 +3,33 @@
  */
 import React from "react";
 import { NavLink } from "react-router-dom";
-import {useSelector} from "react-redux";
+import { useSelector, useDispatch } from 'react-redux';
+import { unwrapResult } from '@reduxjs/toolkit'
+import { useNavigate } from "react-router-dom";
+import { signOutUser } from "../slices/authSlice";
 import './Navigation.css';
 
 function Navigation() {
-    //let loc = document.location.toString().split('/')[3];
+    const dispatch = useDispatch();
+    const navigate = useNavigate()
     const { user, error, status } = useSelector((state) => state.auth);
     let loc = "";
     let content;
+    const handleSignOut = () => {
+        dispatch(signOutUser({"id":user.id})).then(unwrapResult)
+            .then((result) => {if(result.status == "success"){
+                navigate('/')
+            }});
+    };
     if (user.name != null) {
-        content =<NavLink className="nav-link" to={loc+"/user"}>{user.name}</NavLink>
+        content =
+            <div className="dropdown">
+                <button className="dropbtn">{user.name}</button>
+                <div className="dropdown-content">
+                    <NavLink className="nav-link dropdown-row" to={loc+"/user"}>Личная карточка</NavLink>
+                    <a className="nav-link dropdown-row" onClick={handleSignOut}>Выход</a>
+                </div>
+            </div>
     }else{
         content =<NavLink className="nav-link" to={loc+"/login"}>Войти</NavLink>
     }

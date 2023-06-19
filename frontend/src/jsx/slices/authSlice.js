@@ -15,6 +15,20 @@ export const fetchUserByEmail = createAsyncThunk(
     }
 );
 
+export const signOutUser = createAsyncThunk(
+    'signout/fetchUserById',
+    async (user) => {
+        const response = await fetch('signout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json','Accept': 'application/json'
+            },
+            body:  JSON.stringify({userId: user.id})
+        });
+        return response.json();
+    }
+);
+
 const initialState = {
     user: {},
     status: "idle",
@@ -66,6 +80,16 @@ export const authSlice = createSlice({
                     state.status = "successed";
                     state.user = action.payload;
                     //state.user.push(action.payload);
+                })
+                .addCase(signOutUser.pending, (state, action) => {
+                    state.status = "loading";
+                })
+                .addCase(signOutUser.rejected, (state, action) => {
+                    state.status = "failed";
+                })
+                .addCase(signOutUser.fulfilled, (state, action) => {
+                    state.status = "loading";
+                    state.user = {};
                 })
         }
 

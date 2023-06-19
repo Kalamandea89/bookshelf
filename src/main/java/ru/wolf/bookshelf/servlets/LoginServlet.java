@@ -32,10 +32,10 @@ public class LoginServlet extends HttpServlet {
         response.setHeader("Pragma", "no-cache");
         response.setHeader("Expires", "-1");
         User inputUser = new Gson().fromJson(request.getReader(), User.class);
-        JsonObject myObj = new JsonObject();
+        JsonObject respJson = new JsonObject();
         //myObj.addProperty("pass", inputUser.getPass());
-        myObj.addProperty("user", inputUser.getEmail());
-        myObj.addProperty("status", "error");
+        respJson.addProperty("user", inputUser.getEmail());
+        respJson.addProperty("status", "error");
         if (inputUser != null && !"".equals(inputUser.getEmail())){
             log.info("Вход пользователя: " + inputUser.getEmail());
             try {
@@ -46,18 +46,19 @@ public class LoginServlet extends HttpServlet {
                     if(user.getPass().equals(inputUser.getPass())){
                         HttpSession session = request.getSession();
                         session.setAttribute("user", user.getId());
-                        myObj.addProperty("status", "success");
-                        myObj.addProperty("name", user.getName());
-                        myObj.addProperty("email", user.getEmail());
-                        myObj.addProperty("age", user.getAge());
+                        respJson.addProperty("status", "success");
+                        respJson.addProperty("name", user.getName());
+                        respJson.addProperty("email", user.getEmail());
+                        respJson.addProperty("age", user.getAge());
+                        respJson.addProperty("id", user.getId());
                     }
                 }
             }catch (Exception e){
                 log.error(e.getMessage(), e);
             }
         }else{
-            myObj.addProperty("status", "not");
+            respJson.addProperty("status", "not");
         }
-        response.getWriter().write(myObj.toString());
+        response.getWriter().write(respJson.toString());
     }
 }
